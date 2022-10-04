@@ -1,11 +1,11 @@
 # PowerShell version for Windows
 
+# Setting repository
 $repo = Read-Host "Enter your repository link"
 Write-Host "Your link is $repo"
 
-$folder = Read-Host "Enter the name you wish the repo folder to be"
-
 # Folder creation
+$folder = Read-Host "Enter the name you wish the repo folder to be"
 Write-Host "Making repo..."
 New-Item -Path . -Name $folder -ItemType "directory" 2>&1
 Set-Location -Path $folder 2>&1
@@ -17,7 +17,7 @@ $max = Read-Host "Enter the max number of commits you'd like in a day"
 $days = Read-Host "Please, specify the number of days to be applied"
 $date = [DateTimeOffset]::Now.ToUnixTimeSeconds()
 
-# git initialization
+# GIT initialization
 Write-Host "Initialize git..."
 git init
 

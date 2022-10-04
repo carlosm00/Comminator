@@ -1,10 +1,12 @@
 #!/bin/bash
 # Bash version for Linux
 
+# Setting repository
 echo "Enter your repository link"
 read repo
+echo Your link is $repo
 
-# Cean directory
+# Folder setting
 rm -rf dir
 
 # Max commits per day
@@ -16,12 +18,12 @@ echo "Please, specify the number of days to be applied"
 read days
 date=$(date +%s)
 
-# Initialize git
+# GIT initialization
 mkdir dir && cd dir
 git init
 
 # Contribution generator
-echo "Generating fake contributions"
+echo "Generating fake contributions..."
 for i in $(seq $days -1 0)
     do
         rand=$(((RANDOM % $max ) + 1))

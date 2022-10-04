@@ -2,35 +2,41 @@ ECHO off
 SETLOCAL ENABLEDELAYEDEXPANSION
 
 :: Batch version for Windows
+
+:: Setting repository
 ECHO.
 ECHO Enter your repository link
 SET /P repo=""
 ECHO.
-ECHO Your link is: %repo%
+ECHO Your link is %repo%
 
+:: Folder setting
 ECHO. 
 ECHO Enter the name you wish the repo folder to be
 SET /P folder=""
-
-ECHO.
-ECHO Enter the max number of commits you'd like in a day
-SET /P max=""
-
-ECHO.
-ECHO Please, specify the number of days to be applied
-SET /P days=""
-
 ECHO.
 ECHO Making repo...
 mkdir %folder%
 cd %folder%
 
+:: Max commits per day
+ECHO.
+ECHO Enter the max number of commits you'd like in a day
+SET /P max=""
+
+:: Days application
+ECHO.
+ECHO Please, specify the number of days to be applied
+SET /P days=""
+
+:: GIT initialization
 ECHO.
 ECHO Initialize git
 git init
 
+:: Contribution generator
 ECHO.
-ECHO Generating fake contributions
+ECHO Generating fake contributions...
 
 FOR /L %%I IN (%days%,-1,0) DO ( :: Loop Backwards through year
 		mkdir %%I
