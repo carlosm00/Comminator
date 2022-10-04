@@ -1,5 +1,7 @@
 ECHO off
 SETLOCAL ENABLEDELAYEDEXPANSION
+
+:: Batch version for Windows
 ECHO.
 ECHO Enter your repository link
 SET /P repo=""
@@ -15,6 +17,10 @@ ECHO Enter the max number of commits you'd like in a day
 SET /P max=""
 
 ECHO.
+ECHO Please, specify the number of days to be applied
+SET /P days=""
+
+ECHO.
 ECHO Making repo...
 mkdir %folder%
 cd %folder%
@@ -26,7 +32,7 @@ git init
 ECHO.
 ECHO Generating fake contributions
 
-FOR /L %%I IN (365,-1,0) DO ( :: Loop Backwards through year
+FOR /L %%I IN (%days%,-1,0) DO ( :: Loop Backwards through year
 		mkdir %%I
 		cd %%I
 		call :genRand num :: Randomly determine number of commits that day

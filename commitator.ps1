@@ -13,16 +13,18 @@ Set-Location -Path $folder 2>&1
 # Max commits per day
 $max = Read-Host "Enter the max number of commits you'd like in a day"
 
+# Days application
+$days = Read-Host "Please, specify the number of days to be applied"
+$date = [DateTimeOffset]::Now.ToUnixTimeSeconds()
+
 # git initialization
 Write-Host "Initialize git..."
 git init
 
-$date = [DateTimeOffset]::Now.ToUnixTimeSeconds()
-
-# Contribution geneGet-Date -Secondration
+# Contribution generation
 Write-Host "Generating fake contributions..."
 
-for ($i = 365; $i -ge 0; $i--){
+for ($i = $days; $i -ge 0; $i--){
     $rand = (Get-Random) % $max +1
     foreach ($j in (1..$rand)){
         $filename="${i}_${j}"

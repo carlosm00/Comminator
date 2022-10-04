@@ -1,4 +1,5 @@
 #!/bin/bash
+# Bash version for Linux
 
 echo "Enter your repository link"
 read repo
@@ -10,16 +11,18 @@ rm -rf dir
 echo "Enter the max number of commits you'd like in a day"
 read max
 
+# Days application
+echo "Please, specify the number of days to be applied"
+read days
+date=$(date +%s)
+
 # Initialize git
 mkdir dir && cd dir
 git init
 
-# Days application
-N=365
-date=$(date +%s)
-
+# Contribution generator
 echo "Generating fake contributions"
-for i in $(seq $N -1 0)
+for i in $(seq $days -1 0)
     do
         rand=$(((RANDOM % $max ) + 1))
         for j in $(seq 1 $rand)
