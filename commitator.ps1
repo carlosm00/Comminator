@@ -10,6 +10,9 @@ Write-Host "Making repo..."
 New-Item -Path . -Name $folder -ItemType "directory" 2>&1
 Set-Location -Path $folder 2>&1
 
+# Max commits per day
+$max = Read-Host "Enter the max number of commits you'd like in a day"
+
 # git initialization
 Write-Host "Initialize git..."
 git init
@@ -20,7 +23,7 @@ $date = [DateTimeOffset]::Now.ToUnixTimeSeconds()
 Write-Host "Generating fake contributions..."
 
 for ($i = 365; $i -ge 0; $i--){
-    $rand = (Get-Random) % 3 +1
+    $rand = (Get-Random) % $max +1
     foreach ($j in (1..$rand)){
         $filename="${i}_${j}"
 

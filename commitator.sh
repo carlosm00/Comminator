@@ -3,20 +3,25 @@
 echo "Enter your repository link"
 read repo
 
-# clean directory
+# Cean directory
 rm -rf dir
 
-# initialize git
+# Max commits per day
+echo "Enter the max number of commits you'd like in a day"
+read max
+
+# Initialize git
 mkdir dir && cd dir
 git init
 
+# Days application
 N=365
 date=$(date +%s)
 
 echo "Generating fake contributions"
 for i in $(seq $N -1 0)
     do
-        rand=$(((RANDOM % 3) + 1))
+        rand=$(((RANDOM % $max ) + 1))
         for j in $(seq 1 $rand)
             do
                 filename="${i}_${j}"
