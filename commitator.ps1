@@ -14,7 +14,7 @@ Set-Location -Path $folder 2>&1
 $max = Read-Host "Enter the max number of commits you'd like in a day"
 
 # Days application
-$days = Read-Host "Please, specify the number of days to be applied"
+[int]$days = Read-Host "Please, specify the number of days to be applied"
 $date = [DateTimeOffset]::Now.ToUnixTimeSeconds()
 
 # GIT initialization
