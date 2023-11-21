@@ -25,7 +25,7 @@ git init
 Write-Host "Generating fake contributions..."
 
 for ($i = $days; $i -ge 0; $i--){
-    $rand = (Get-Random) % $max +1
+    $rand = ((Get-Random) % $max)
     foreach ($j in (1..$rand)){
         $filename="${i}_${j}"
 
